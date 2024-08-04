@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { serverUrl } from "../utils";
 class Amthal extends Component {
   constructor() {
     super();
@@ -7,12 +7,12 @@ class Amthal extends Component {
     this.fetchAmthal=this.fetchAmthal.bind(this);
   }
   componentDidMount() {
-    fetch("http://localhost:3009/amthal/random")
+    fetch(`${serverUrl}/amthal/random`)
       .then((response) => response.json())
       .then((json) => this.setState({ mathal: json }));
   }
   fetchAmthal() {
-    fetch("http://localhost:3009/amthal/ten")
+    fetch(`${serverUrl}/amthal/ten`)
       .then((response) => response.json())
       .then((json) => this.setState({ amthal: json }));
   }

@@ -4,6 +4,7 @@ import ImageShadow from "react-image-shadow";
 import "react-image-shadow/assets/index.css";
 
 const Gallary =() =>{
+    
     return(
         <div>
             {IMAGES.map(imageObject =>{
@@ -20,7 +21,7 @@ const Image = ({src, desc}) => {
             <a target="_blank" rel="noreferrer" href={src}>
             <ImageShadow src={src}/>
             </a>
-        <p>description</p>
+            <p>{desc}</p>
         </div>
     )
 }
