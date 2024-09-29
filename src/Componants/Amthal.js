@@ -18,15 +18,23 @@ const Amthal = () => {
   const [amthal, setAmthal] = useState([]);
 
   useEffect(() => {
-    setMathal(randomMathal());
+    try {
+      setMathal(randomMathal());
+    } catch (error) {
+      console.error('Error fetching mathal:', error);
+    }
   }, []);
 
   const fetchAmthal = () => {
-    setAmthal(randomTen());
+    try {
+      setAmthal(randomTen());
+    } catch (error) {
+      console.error('Error fetching amthal:', error);
+    }
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Today's Mathal</h2>
       <p>{mathal.title}</p>
       <hr />

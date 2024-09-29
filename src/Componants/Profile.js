@@ -1,40 +1,36 @@
-
-import React from "react";
+import React, { useState } from "react";
 import profilepicture from "../assets/ProfilePic.jpeg";
 
-class Profile extends React.Component {
-  constructor() {
-    super();
-   
-    this.state = { displayBio: false };
-    this.toggle = this.toggle.bind(this);
-  }
-  toggle() {
-    this.setState({displayBio: !this.state.displayBio})
+const Profile = () => {
+  const [displayBio, setDisplayBio] = useState(false);
 
-  }
-  render() {
-    return (
-      <div>
-        <img src={profilepicture} className="profile" alt="profile"/>
-        <h1>Hello</h1>
-        <p>My name is Abdulkareem, and I am a software enginner.</p>
-        {this.state.displayBio? (
+  const toggle = () => {
+    console.log("Toggle button clicked");
+    setDisplayBio(!displayBio);
+  };
+
+  return (
+    <div className="profile-container">
+      <img src={profilepicture} className="profile" alt="profile" />
+      <div className="profile-details">
+        <h1 className="gradient-text">Hello, I'm Abdulkareem!</h1>
+        <p className="gradient-text">A Passionate Software Engineer</p>
+        {displayBio ? (
           <div>
-            <p> I have a strong passion for continuous learning,</p>
-            <p>and I find working with React to be particularly enjoyable.</p>
-            <button onClick={this.toggle} className="btn">
-              Hide
-            </button>
+            <p className="gradient-text">
+              Motivated and results-driven with expertise in C++, C#, and the MERN stack.
+            </p>
+            <p className="gradient-text">
+              Seeking to apply my skills in a challenging Backend or Full Stack Developer role.
+            </p>
+            <button onClick={toggle} className="btn">Hide</button>
           </div>
         ) : (
-          <button onClick={this.toggle} className="btn">
-            Show More
-          </button>
+          <button onClick={toggle} className="btn">Show More</button>
         )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Profile;

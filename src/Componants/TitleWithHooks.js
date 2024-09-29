@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 const TITLES = [
-  "A software enginner",
+  "A software engineer",
   "a pc games lover",
   "an enthusiastic learner",
 ];
+
 const TitleWithHooks = () => {
   const [titleIndex, setTitleIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
@@ -31,9 +32,11 @@ const TitleWithHooks = () => {
   }, [titleIndex]);
 
   return (
-    <p className={fadeIn ? "title-fade-in" : "title-fade-out"}>
-      I am {TITLES[titleIndex]}
-    </p>
+    <div className="title-container">
+      <p className={fadeIn ? "title-fade-in" : "title-fade-out"}>
+        I am {TITLES[titleIndex]}
+      </p>
+    </div>
   );
 };
 

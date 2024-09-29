@@ -1,42 +1,30 @@
-/* fuctional componant
-function App(){
-    const myStyle = {textAlign: "center", backgroundColor: "yellow"};
-    return (
-    <div style={myStyle}>
-    <p >Hello React</p>
-    <p >React World</p>
-    </div>
-    );
-}
-*/
 import React from "react";
 import Profile from "./Profile";
 import Qualifications from "./Qualifications";
 import Courses from "./Courses";
 import "../index.css";
 import SocialProfiles from "./SocialProfiles";
-import Title from "./TitleWithHooks";
+import TitleWithHooks from "./TitleWithHooks";
+import Header from "./Header";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <div className="row">
-          <Title/>
-          <div className="column">
-            <Profile />
-          </div>
-          <div className="column">
-            <Qualifications />
-          </div>
+const App = () => {
+  return (
+    <div className="container">
+      <TitleWithHooks />
+      <div className="row">
+        <div className="column">
+          <Profile />
         </div>
-        <hr/>
-          <Courses/>
-          <hr/>
-          <SocialProfiles/>
+        <div className="column">
+          <Qualifications />
+        </div>
       </div>
-    );
-  }
-}
+      <hr />
+      <Courses />
+      <hr />
+      <SocialProfiles />
+    </div>
+  );
+};
 
 export default App;

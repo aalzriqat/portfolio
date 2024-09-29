@@ -1,39 +1,33 @@
-import React, {Component} from "react";
+import React, { useState, useEffect } from "react";
 
- const TITLES =["A software enginner","a pc games lover","an enthusiastic learner" ];
-class Title extends Component{
-    constructor(){
-        super();
-        this.state = {titleIndex: 0,fadeIn:true}
-    }
+const TITLES = ["A software engineer", "a pc games lover", "an enthusiastic learner"];
 
-    componentDidMount(){
-        this.animateTitles();
-        this.timeout = setTimeout(() => {
-            this.setState({fadeIn:false})
-        }, 2000);
-    }
+const Title = () => {
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [fadeIn, setFadeIn] = useState(true);
 
-    componentWillUnmount(){
-        clearInterval(this.titleInterval);
-        clearTimeout(this.timeout);
-    }
-    animateTitles(){
-        this.titleInterval = setInterval(()=>{
-            const titleIndex= (this.state.titleIndex +1) % TITLES.length;
-         this.setState({titleIndex,fadeIn:true});
-         this.timeout = setTimeout(() => {
-            this.setState({fadeIn:false})
-        }, 2000);
-        },4000)
-    }
-    render(){
-        return(
-            <p className={this.state.fadeIn?"title-fade-in":"title-fade-out"}>
-                I am {TITLES[this.state.titleIndex]}
-            </p>
-        )
-    }
-}
+  useEffect(() => {
+    const animateTitles = () => {
+      const titleInterval = setInterval(() => {
+        const index = (titleIndex + 1) % TITLES.length;
+        setTitleIndex(index);
+        setFadeIn(true);
+        setTimeout(() => setFadeIn(false), 2000);
+      }, 4000);
+
+      return () => {
+        clearInterval(titleInterval);
+      };
+    };
+
+    animateTitles();
+  }, [titleIndex]);
+
+  return (
+    <p className={fadeIn ? "title-fade-in" : "title-fade-out"}>
+      I am {TITLES[titleIndex]}
+    </p>
+  );
+};
 
 export default Title;

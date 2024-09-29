@@ -11,7 +11,7 @@ const SOCIAL_PROFILES = [
    },
    {
     id:2,
-    link:"https://github.com/criftyoo",
+    link:"https://github.com/aalzriqat",
     image:GitHub ,
    },
    {
